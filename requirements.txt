@@ -1,0 +1,5 @@
+# Function dependencies:
+pymysql
+fastavro
+google-cloud-storage
+tabulate
