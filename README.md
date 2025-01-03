@@ -30,7 +30,6 @@ The solution uses the following GCP services:
 - **Cloud SQL**: MySQL database hosting.
 
 ### Workflow
-![Architecture Diagram](link_to_architecture_diagram.png)  
 
 1. Data is managed in Cloud SQL.
 2. Backups and reports are stored in Cloud Storage.
