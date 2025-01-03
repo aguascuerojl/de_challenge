@@ -1,6 +1,6 @@
 # Database Migration in GCP
 
-This project has an experimental approach, that is why uploaded file may look redundant, the project focuses on managing and migrating data in a MySQL database hosted on Google Cloud Platform (GCP). It includes functions to truncate tables, retrieve data, back up data to Avro format, and generate reports from the database.
+This project has an experimental approach, that is why uploaded file may look redundant, the project focuses on managing and migrating data in a MySQL database hosted on Google Cloud Platform (GCP). It includes functions to, move data, truncate tables, retrieve data, back up data to Avro format, and generate reports from the database.
 
 ---
 
@@ -8,10 +8,8 @@ This project has an experimental approach, that is why uploaded file may look re
 1. [Features](#features)
 2. [Architecture](#architecture)
 3. [Requirements](#requirements)
-4. [Setup](#setup)
-5. [Usage](#usage)
-6. [Endpoints](#endpoints)
-7. [Error Handling](#error-handling)
+4. [Endpoints](#endpoints)
+
 
 ---
 
@@ -66,55 +64,16 @@ tabulate
 
 ---
 
-## Setup
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd <repository-folder>
-   ```
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Deploy Cloud Functions using gcloud CLI:
-   ```bash
-   gcloud functions deploy <function-name> --runtime python3.9 \
-       --trigger-http --allow-unauthenticated
-   ```
 
----
-
-## Usage
-
-### 1. Truncate Tables
-Function: `truncar_tablas`
-```python
-truncar_tablas()
-```
-Truncates the `employees`, `jobs`, and `departments` tables.
-
-### 2. Backup Data
-Function: `backup_data`
-Backups table data to Avro files and uploads to GCS.
-
-### 3. Generate Reports
-#### Employees Hired by Quarter
-Endpoint: `/quarterly-hired`
-- Generates a report showing the number of employees hired by department and job per quarter in 2021.
-
-#### Departments Hiring Above Average
-Endpoint: `/hiring-by-department`
-- Returns departments that hired more employees than the average in 2021.
-
----
 
 ## Endpoints
-| Endpoint                          | Description                                             |
-|-----------------------------------|---------------------------------------------------------|
-| `/quarterly-hired`                | Report of employees hired per quarter in 2021.         |
-| `/hiring-by-department`           | Departments hiring above average in 2021.              |
-| `/backup-data`                    | Back up MySQL tables to Avro and store in GCS.         |
-| `/truncate-tables`                | Truncate the `jobs`, `departments`, and `employees`.   |
+| Endpoint                          | Description                                                                                                                       |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| `/move-data`                      | Transfer data from csv file to mysql database. https://us-central1-bigdata-migration-446522.cloudfunctions.net/move-data          |
+| `/quarterly-hired`                | Report of employees hired per quarter in 2021.  https://us-central1-bigdata-migration-446522.cloudfunctions.net/quarterly-hired   |
+| `/hiring-by-department`           | Departments hiring above average in 2021.   https://us-central1-bigdata-migration-446522.cloudfunctions.net/hiring-by-department  |
+| `/backup-data`                    | Back up MySQL tables to Avro and store in GCS.     https://us-central1-bigdata-migration-446522.cloudfunctions.net/backup-data    |
+| `/delete-data`                    | Truncate the `jobs`, `departments`, and `employees`.  https://us-central1-bigdata-migration-446522.cloudfunctions.net/delete-data |
 
 ---
 
