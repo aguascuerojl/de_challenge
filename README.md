@@ -1,4 +1,4 @@
-# Database Migration and Management
+# Database Migration in GCP
 
 This project has an experimental approach, that is why uploaded file may look redundant, the project focuses on managing and migrating data in a MySQL database hosted on Google Cloud Platform (GCP). It includes functions to truncate tables, retrieve data, back up data to Avro format, and generate reports from the database.
 
